@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Material))]
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerTwo : MonoBehaviour
@@ -25,9 +26,14 @@ public class PlayerTwo : MonoBehaviour
 
     void FixedUpdate()
     {
-        HandleInput();
+       
     }
 
+    private void Update()
+    {
+    
+     
+    }
 
     private void HandleInput()
     {
@@ -66,6 +72,11 @@ public class PlayerTwo : MonoBehaviour
         {
             m_thrust = 100;
         }
+    }
+
+    void ControllerInput()
+    { 
+       
     }
 
     private void OnTriggerEnter(Collider other)

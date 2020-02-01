@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerOne : MonoBehaviour
 {
+    PlayerControls gamepadInput;
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private float health;
     private bool takeDamage = false;
@@ -16,7 +17,7 @@ public class PlayerOne : MonoBehaviour
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
-
+        gamepadInput = new PlayerControls();
 
         m_xSpeedMax = 250;
         m_xSpeedmin = 100;
@@ -27,6 +28,7 @@ public class PlayerOne : MonoBehaviour
     void FixedUpdate()
     {
         HandleInput();
+        ControllerInput();
     }
 
 
@@ -67,6 +69,13 @@ public class PlayerOne : MonoBehaviour
         {
             m_thrust = 100;
         }
+    }
+
+    void ControllerInput()
+    {
+        gamepadInput.Gameplay.LeftMovement.performed += ctx => m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.VelocityChange);
+
+
     }
 
     private void OnTriggerEnter(Collider other)
