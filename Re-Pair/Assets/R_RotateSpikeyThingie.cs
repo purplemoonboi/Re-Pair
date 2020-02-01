@@ -17,6 +17,6 @@ public class R_RotateSpikeyThingie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, m_angularVelocity * Time.deltaTime, 0);
     }
 }
