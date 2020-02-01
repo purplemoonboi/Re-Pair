@@ -8,7 +8,7 @@ public class bac_CameraController : MonoBehaviour
 {
     public List<Transform> m_cameraTargets;
 
-  [SerializeField]  private float m_smoothTime = 0.5f;
+    [SerializeField] private float m_smoothTime = 0.5f;
     [SerializeField] private float m_minZoom = 40f;
     [SerializeField] private float m_maxZoom = 10f;
     [SerializeField] private float m_zoomLimiterY = 50f;
@@ -20,7 +20,7 @@ public class bac_CameraController : MonoBehaviour
     private Vector3 m_centrePoint;
     private Vector3 m_newPosition;
     private Vector3 m_velocity;
-    private Vector3 m_offset;
+   [SerializeField] private Vector3 m_offset;
 
     public Camera m_mainCamera;
     public Camera m_secondCamera;
