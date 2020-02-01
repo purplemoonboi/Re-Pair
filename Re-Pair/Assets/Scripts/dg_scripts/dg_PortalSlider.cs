@@ -40,7 +40,7 @@ public class dg_PortalSlider : MonoBehaviour
 
     public void decrementValueFromSlider()
     {
-        m_portalVal -= 3.0f * Time.deltaTime;
+        m_portalVal -= 20.0f * Time.deltaTime;
         m_portalSlider.value = m_portalVal;
     }
 }
