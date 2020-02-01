@@ -5,12 +5,29 @@ using UnityEngine;
 public class PlayerOne : MonoBehaviour
 {
 
-    
+    [SerializeField] private float health;
+    private bool takeDamage = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
+        if(takeDamage)
+        {
+           
+        }
+       
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Damage" )
+        {
+            health -= 100;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        takeDamage = false;
+    }
 }
