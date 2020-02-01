@@ -13,7 +13,8 @@ public class bac_CameraController : MonoBehaviour
     private float m_smoothTime = 0.5f;
     private float m_minZoom = 40f;
     private float m_maxZoom = 10f;
-    private float m_zoomLimiter = 50f;
+    private float m_zoomLimiterY = 50f;
+    private float m_zoomLimiterZ = -23.5f;
 
     private Vector3 m_centrePoint;
     private Vector3 m_newPosition;
@@ -21,10 +22,12 @@ public class bac_CameraController : MonoBehaviour
 
     private Camera m_camera;
 
+    private Bounds m_cameraBounds;
+
     void Start()
     {
         m_camera = GetComponent<Camera>();
-        m_offset = new Vector3(0, 0, -m_zoomLimiter);
+        m_offset = new Vector3(0f, m_zoomLimiterY, m_zoomLimiterZ);
     }
 
     void LateUpdate()
@@ -33,6 +36,8 @@ public class bac_CameraController : MonoBehaviour
         {
             return;
         }
+
+        m_cameraBounds = getEncapsulatingBounds();
 
         panCamera();
         zoomCamera();
@@ -47,13 +52,23 @@ public class bac_CameraController : MonoBehaviour
 
     void zoomCamera()
     {
-        Debug.Log(getGreatestDistance());
+        float l_newZoomLimit = 0;
 
-        float l_newZoom = Mathf.Lerp(m_maxZoom, m_minZoom, getGreatestDistance() / 50f);
+        if (getGreatestDistance() == m_cameraBounds.size.x)
+        {
+            l_newZoomLimit = m_zoomLimiterY;
+        }
+
+        else if(getGreatestDistance() == m_cameraBounds.size.z)
+        {
+            l_newZoomLimit = m_zoomLimiterY / 2.5f;
+        }
+
+        float l_newZoom = Mathf.Lerp(m_maxZoom, m_minZoom, getGreatestDistance() / l_newZoomLimit);
         m_camera.fieldOfView = Mathf.Lerp(m_camera.fieldOfView, l_newZoom, Time.deltaTime);
     }
 
-    Bounds getEncapsulatingBounds()
+    Bounds getEncapsulatingBounds() //Calculates and returns the bounding box containing all camera target objects
     {
         Bounds l_bounds = new Bounds(m_cameraTargets[0].position, Vector3.zero);
 
@@ -72,15 +87,11 @@ public class bac_CameraController : MonoBehaviour
             return m_cameraTargets[0].position;
         }
 
-        Bounds l_cameraBounds = getEncapsulatingBounds();
-
-        return l_cameraBounds.center;
+        return m_cameraBounds.center;
     }
 
-    float getGreatestDistance()
+    float getGreatestDistance() //Returns the greatest distance between all camera target objects
     {
-        Bounds l_bounds = getEncapsulatingBounds();
-
-        return Mathf.Max(l_bounds.size.x, l_bounds.size.y);
+        return Mathf.Max(m_cameraBounds.size.x, m_cameraBounds.size.z);
     }
 }
