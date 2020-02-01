@@ -31,13 +31,13 @@ public class dg_PortalSlider : MonoBehaviour
 
     public void addValueToSlider()
     {
-        portalVal += 10;
+        portalVal += 100 * Time.deltaTime;
         portalSlider.value = portalVal;
     }
 
     public void decrementValueFromSlider()
     {
-        portalVal -= 0.1f;
+        portalVal -= 3.0f * Time.deltaTime;
         portalSlider.value = portalVal;
     }
 }
