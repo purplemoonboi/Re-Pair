@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tmp_playerMat
-  m_Shader: {fileID: -6465566751694194690, guid: 13c4915236cbbb54cae83c8059037648,
+  m_Shader: {fileID: -6465566751694194690, guid: 247b27a9ba92f5d4b856fadd5f23a8b5,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -57,12 +57,37 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_1242B819_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 4b9aefacc0b8e524bbe7b19fb96a0686, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_3DC56079_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6b21146682a3db148b74b49e5f8f8ce8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_494547CB_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2e40e40640a626d4c8f4062dcc8ab165, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7E9AEE00_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 2e40e40640a626d4c8f4062dcc8ab165, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_DE5B246E_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 6b21146682a3db148b74b49e5f8f8ce8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_E1ACD721_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 4b9aefacc0b8e524bbe7b19fb96a0686, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_582EC203: 2
+    - Vector1_71405830: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -74,9 +99,12 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Glow: 2
-    - _GlowOne: 77.58873
+    - _GlowOne: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
+    - _PlayerOneGlow: 1
+    - _PlayerTwoGlow: 0.5
+    - _PlayerTwoPower: 1.5
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5

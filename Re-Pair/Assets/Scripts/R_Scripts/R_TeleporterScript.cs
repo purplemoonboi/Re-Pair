@@ -77,7 +77,7 @@ public class R_TeleporterScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "PlayerOne" || other.tag == "PlayerTwo" || other.tag == "MainCamera")
+        if(other.tag == "PlayerOne" && other.tag == "PlayerTwo") 
         {
             Debug.Log("No colliding");
             m_PlayerOneIsOverlapping = true;
@@ -88,7 +88,7 @@ public class R_TeleporterScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "player")
+        if(other.tag == "playerOne" && other.tag == "PlayerTwo") 
         {
             m_PlayerOneIsOverlapping = false;
             m_PlayerTwoIsOverlapping = false;
