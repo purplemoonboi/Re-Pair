@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class dg_Ring : MonoBehaviour
 {
-    [SerializeField] private dg_PortalSlider slider;
+    [SerializeField] private dg_PortalSlider m_slider;
 
     private void OnTriggerEnter(Collider other)
     {
-        slider.addValueToSlider();
+        m_slider.addValueToSlider();
         print("Setting true");
     }
 
     private void OnTriggerExit(Collider other)
     {
-        slider.decrementValueFromSlider();
+        m_slider.decrementValueFromSlider();
         print("Setting false");
     }
 }
