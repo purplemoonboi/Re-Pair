@@ -12,7 +12,7 @@ public class bac_CameraController : MonoBehaviour
     private float m_minZoom = 40f;
     private float m_maxZoom = 10f;
     private float m_zoomLimiterY = 50f;
-    private float m_zoomLimiterZ = -23.5f;
+    private float m_zoomLimiterZ = -8.5f;
 
     private bool m_checkSplit = false;
 
@@ -30,6 +30,7 @@ public class bac_CameraController : MonoBehaviour
     {
         m_mainCamera = Camera.main;
         m_secondCamera = GameObject.FindGameObjectWithTag("SecondCamera").GetComponent<Camera>();
+        m_secondCamera.rect = new Rect(0, 0, 0, 0);
         m_cameraTargets.Add(GameObject.FindGameObjectWithTag("PlayerOne").transform);
         m_cameraTargets.Add(GameObject.FindGameObjectWithTag("PlayerTwo").transform);
         m_offset = new Vector3(0f, m_zoomLimiterY, m_zoomLimiterZ);
@@ -77,6 +78,7 @@ public class bac_CameraController : MonoBehaviour
 
         float l_newZoom = Mathf.Lerp(m_maxZoom, m_minZoom, getGreatestDistance() / l_newZoomLimit);
         m_mainCamera.fieldOfView = Mathf.Lerp(m_mainCamera.fieldOfView, l_newZoom, Time.deltaTime);
+        m_secondCamera.fieldOfView = Mathf.Lerp(m_secondCamera.fieldOfView, l_newZoom, Time.deltaTime); 
     }
 
     void splitScreen()
@@ -100,10 +102,8 @@ public class bac_CameraController : MonoBehaviour
                 }
 
                 m_mainCamera.rect = new Rect(0, 0, 0.5f, 1f);
-                m_secondCamera.gameObject.SetActive(true);
                 m_secondCamera.rect = new Rect(0.5f, 0, 0.5f, 1f);
             }
-
             else
             {
                 m_cameraTargets.Clear();
@@ -111,7 +111,7 @@ public class bac_CameraController : MonoBehaviour
                 m_cameraTargets.Add(GameObject.FindGameObjectWithTag("PlayerTwo").transform);
 
                 m_mainCamera.rect = new Rect(0, 0, 1f, 1f);
-                m_secondCamera.gameObject.SetActive(false);
+                m_secondCamera.rect = new Rect(0, 0, 0, 0);
             }
         }
     }

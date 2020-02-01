@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 2455307a440df9b469cb227a41fea820
+guid: 66eefa0435a9ec446a21029fb2984c94
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pTorus2Mat
-    second: {fileID: 2100000, guid: c5b28896de8202b4a9974daaea366290, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
