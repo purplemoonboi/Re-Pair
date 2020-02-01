@@ -8,11 +8,12 @@ public class bac_CameraController : MonoBehaviour
 {
     public List<Transform> m_cameraTargets;
 
-    private float m_smoothTime = 0.5f;
-    private float m_minZoom = 40f;
-    private float m_maxZoom = 10f;
-    private float m_zoomLimiterY = 50f;
-    private float m_zoomLimiterZ = -23.5f;
+  [SerializeField]  private float m_smoothTime = 0.5f;
+    [SerializeField] private float m_minZoom = 40f;
+    [SerializeField] private float m_maxZoom = 10f;
+    [SerializeField] private float m_zoomLimiterY = 50f;
+    [SerializeField]
+ private float m_zoomLimiterZ = -23.5f;
 
     private bool m_checkSplit = false;
 

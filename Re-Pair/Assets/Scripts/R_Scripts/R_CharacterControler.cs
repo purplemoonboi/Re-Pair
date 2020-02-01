@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing; //need to install ppmanager 
+using UnityEngine.Rendering.PostProcessing; 
+
 
 
 [RequireComponent(typeof(Material))]
@@ -12,77 +13,76 @@ public class R_CharacterControler : MonoBehaviour
 
     [SerializeField] private Rigidbody m_rigidbody;
 
-    [SerializeField] private Material m_characterMaterial;
-    [SerializeField] private Renderer m_characterRenderer;
+    [SerializeField] [Range(1, 10000)] private float m_thrust = 100f;
 
-    [SerializeField] [Range(2000, 10000)] private float m_thrust = 100f;
 
-    
-
-    private Vector3 m_objectPosition;
-    private Vector3 m_targetPosition;
-
+    [SerializeField]private Transform m_objectPosition;
+    [SerializeField]private Transform m_targetPosition;
+    public static float m_distance;
 
     void Start()
     {
         m_rigidbody = GetComponent<Rigidbody>();
-        m_characterMaterial = GetComponentInChildren<Material>();
-        m_characterRenderer = GetComponentInChildren<Renderer>();
+        
+       
 
-        m_objectPosition = transform.position;
+        
+       if(m_targetPosition == null)
+        {
+            Debug.Log("Cannot find target transform");
+        }
     }
 
+    private void Update()
+    {
+        m_distance = CalculateDst(m_objectPosition.position, m_targetPosition.position);
+        Debug.Log("Distance: " + m_distance);
+    }
 
     void FixedUpdate()
     {
         HandleInput();
-        ManipulateObjectEmission();
+        ClampVelocity();
     }
 
     private void HandleInput()
     {
         if (Input.GetKey(KeyCode.W))
         {
-            m_rigidbody.AddForce(transform.forward * m_thrust * Time.deltaTime);
+            m_rigidbody.AddForce(transform.forward * m_thrust * Time.deltaTime, ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.S))
         {
-            m_rigidbody.AddForce(transform.forward * -m_thrust * Time.deltaTime);
+            m_rigidbody.AddForce(-transform.forward * m_thrust * Time.deltaTime, ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.A))
         {
-            m_rigidbody.AddForce(transform.right * -m_thrust * Time.deltaTime);
+            m_rigidbody.AddForce(transform.right * -m_thrust * Time.deltaTime, ForceMode.VelocityChange);
         }
         if (Input.GetKey(KeyCode.D))
         {
-            m_rigidbody.AddForce(transform.right * m_thrust * Time.deltaTime);
+            m_rigidbody.AddForce(transform.right * m_thrust * Time.deltaTime, ForceMode.VelocityChange);
         }
     }
 
-    private void ManipulateObjectEmission()
+    void ClampVelocity()
     {
-        float l_dst = 0;
+        
+       float l_velocity = Mathf.Clamp(m_rigidbody.velocity.y, 0 , 10);
 
-        l_dst = CalculateDst(m_objectPosition, m_targetPosition);
-        if (l_dst < 30)
-        {
-          
-        }
+        m_rigidbody.velocity.Set(m_rigidbody.velocity.x, l_velocity, m_rigidbody.velocity.z);
     }
 
     private float CalculateDst(Vector3 par_posOne, Vector3 par_posTwo)
     {
-        float l_dst = 0;
+        float par_dst = Vector3.Distance(par_posOne, par_posTwo);
 
-        l_dst = (par_posOne.x - par_posTwo.x) * (par_posOne.x - par_posTwo.x) +
-            (par_posOne.z - par_posTwo.z) * (par_posOne.z - par_posTwo.z);
-
-        return l_dst;
+        return par_dst;
     }
 
-    void HandlePostProcessing()
+    public static float GetDistance()
     {
-
+        return m_distance;
     }
 
 }
