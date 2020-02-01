@@ -22,6 +22,7 @@ public class dg_GameOver : MonoBehaviour
 
     public void FadeInText()
     {
-        m_portalClosedText.CrossFadeAlpha(0.0f, m_fadetime, false);
+        print("Fade called");
+        m_portalClosedText.CrossFadeAlpha(1.0f, m_fadetime, false);
     }
 }
