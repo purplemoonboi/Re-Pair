@@ -10,12 +10,10 @@ public class dg_Ring : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         m_slider.addValueToSlider();
-        print("Setting true");
     }
 
     private void OnTriggerExit(Collider other)
     {
         m_slider.decrementValueFromSlider();
-        print("Setting false");
     }
 }
