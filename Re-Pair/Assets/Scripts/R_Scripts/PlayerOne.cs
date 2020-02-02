@@ -11,7 +11,7 @@ public class PlayerOne : MonoBehaviour
 
     [SerializeField] [Range(1, 10000)] private float m_thrust = 100f;
     [SerializeField] private Rigidbody m_rigidbody;
-    [SerializeField] private float health;
+     public float health;
     [SerializeField] public bool hasFinishedSplitScreen = false; //Added by Bridget
     private bool takeDamage = false;
 
@@ -88,6 +88,11 @@ public class PlayerOne : MonoBehaviour
       //  gamepadInput.Gameplay.LeftMovement.performed += ctx => m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.VelocityChange);
 
 
+    }
+
+    public void IncrimentHealth()
+    {
+        health += 25;
     }
 
     private void OnTriggerEnter(Collider other)

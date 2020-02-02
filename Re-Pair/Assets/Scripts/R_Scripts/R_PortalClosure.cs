@@ -7,7 +7,7 @@ public class R_PortalClosure : MonoBehaviour
 
     Vector3 m_localScale;
     private float m_localScaleX, m_localScaleZ;
-
+    private float m_localRotX, m_localRotZ;
     
 
     // Start is called before the first frame update

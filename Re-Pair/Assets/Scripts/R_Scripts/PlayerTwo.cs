@@ -9,7 +9,7 @@ public class PlayerTwo : MonoBehaviour
 {
     [SerializeField] [Range(1, 10000)] private float m_thrust = 100f;
     [SerializeField] private Rigidbody m_rigidbody;
-    [SerializeField] private float health;
+    public float health;
     [SerializeField] public bool hasFinishedSplitScreen = false; //Added by Bridget
     private bool takeDamage = false;
 
@@ -49,44 +49,49 @@ public class PlayerTwo : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            m_thrust += 10;
+            m_thrust += 125;
 
             m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.Acceleration);
-            if (m_thrust > 150)m_thrust = 150;
+            if (m_thrust > 900)m_thrust = 900;
 
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            m_thrust += 10;
+            m_thrust += 125;
 
             m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime, ForceMode.Acceleration);
-            if (m_thrust > 150) m_thrust = 150;
+            if (m_thrust > 900) m_thrust = 900;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            m_thrust += 10;
+            m_thrust += 125;
 
             m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
-            if (m_thrust > 150) m_thrust = 150;
+            if (m_thrust > 900) m_thrust = 900;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            m_thrust += 10;
+            m_thrust += 125;
 
             m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
-            if (m_thrust > 150) m_thrust = 150;
+            if (m_thrust > 900) m_thrust = 900;
         }
-        else m_thrust -= 10;
+        else m_thrust -= 75;
 
-        if (m_thrust < 80)
+        if (m_thrust < 300)
         {
-            m_thrust = 80;
+            m_thrust = 300;
         }
     }
 
     void ControllerInput()
     { 
        
+    }
+
+    public void IncrimentHealth()
+    {
+        health += 25;
     }
 
     private void OnTriggerEnter(Collider other)
