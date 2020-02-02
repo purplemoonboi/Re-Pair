@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rotation : MonoBehaviour
+public class R_RotateSpikeyThingie : MonoBehaviour
 {
+
+    [SerializeField] private float m_angularVelocity = 10;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +17,6 @@ public class Rotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, m_angularVelocity * Time.deltaTime, 0);
     }
 }

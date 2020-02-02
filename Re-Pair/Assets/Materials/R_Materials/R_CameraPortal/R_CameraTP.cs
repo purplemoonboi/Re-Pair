@@ -33,9 +33,9 @@ public class R_CameraTP : MonoBehaviour
     {
         Vector3 playerOffsetFromPortal = playerCamera.position - m_portalB.position;
 
-        transform.position = m_portalA.position + playerOffsetFromPortal;
+        transform.position = m_portalB.position + playerOffsetFromPortal;
 
-        float angularDifference = Quaternion.Angle(m_portalA.rotation, m_portalB.rotation);
+        float angularDifference = Quaternion.Angle(m_portalB.rotation, m_portalA.rotation);
 
         Quaternion portalRotDiffernce = Quaternion.AngleAxis(angularDifference, Vector3.up);
         Vector3 newCameraDir = portalRotDiffernce * playerCamera.forward;
