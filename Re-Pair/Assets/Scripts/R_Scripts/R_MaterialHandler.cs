@@ -10,13 +10,13 @@ public class R_MaterialHandler : MonoBehaviour
 
     [SerializeField] private Material m_materialOne;
     [SerializeField] private Material m_materialTwo;
-    [SerializeField] private R_CharacterControler m_controllerInstance;
+   
 
     // Start is called before the first frame update
     private void Start()
     {
-        m_materialOne.SetFloat("_GlowOne", 1);
-        m_materialTwo.SetFloat("_Glow", 1);
+        m_materialOne.SetFloat("_intensity", 1);
+        m_materialTwo.SetFloat("_intensity", 1);
     }
 
     private void Update()
@@ -28,13 +28,13 @@ public class R_MaterialHandler : MonoBehaviour
     private void ManipulateObjectEmission()
     {
 
-        float l_dst = R_CharacterControler.GetDistance();
-       
+        float l_dst = R_GameSolver.GetDistance();
 
-        Mathf.Clamp(l_dst, 1, 10);
+        l_dst -= 10;
+        
 
-        m_materialOne.SetFloat("_GlowOne", l_dst);
-        m_materialTwo.SetFloat("_Glow", l_dst);
+        m_materialOne.SetFloat("_intensity", l_dst);
+        m_materialTwo.SetFloat("_intensity", l_dst);
        
     }
 }

@@ -11,7 +11,7 @@ public class R_CameraTP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CalculateAngularDifferenceCameraA();
+       // CalculateAngularDifferenceCameraA();
         CalculateAngularDifferenceCameraB();
     }
 
