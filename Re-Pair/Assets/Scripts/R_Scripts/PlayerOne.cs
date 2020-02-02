@@ -20,7 +20,7 @@ public class PlayerOne : MonoBehaviour
     private void Awake()
     {
         m_rigidbody = GetComponent<Rigidbody>();
-        gamepadInput = new PlayerControls();
+      //  gamepadInput = new PlayerControls();
 
         m_xSpeedMax = 250;
         m_xSpeedmin = 100;
@@ -47,44 +47,44 @@ public class PlayerOne : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            //m_thrust += 10;
+            m_thrust += 125;
 
-            m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime);
-            if (m_thrust > 250) m_thrust = 250;
+            m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.Acceleration);
+            if (m_thrust > 900) m_thrust = 900;
 
         }
         if (Input.GetKey(KeyCode.S))
         {
-            //m_thrust += 10;
+            m_thrust += 125;
 
-            m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime);
-            if (m_thrust > 250) m_thrust = 250;
+            m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime, ForceMode.Acceleration);
+            if (m_thrust > 900) m_thrust = 900;
         }
         if (Input.GetKey(KeyCode.A))
         {
-           // m_thrust += 10;
+           m_thrust += 125;
 
-            m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0);
-            if (m_thrust > 250) m_thrust = 250;
+            m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
+            if (m_thrust > 900) m_thrust = 900;
         }
         if (Input.GetKey(KeyCode.D))
         {
-           // m_thrust += 10;
+            m_thrust += 125;
 
-            m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0);
-            if (m_thrust > 250) m_thrust = 250;
+            m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
+            if (m_thrust > 900) m_thrust = 900;
         }
-         m_thrust -= 10;
+         m_thrust -= 75;
 
-        if (m_thrust < 100)
+        if (m_thrust < 300)
         {
-            m_thrust = 100;
+            m_thrust = 300;
         }
     }
 
     void ControllerInput()
     {
-        gamepadInput.Gameplay.LeftMovement.performed += ctx => m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.VelocityChange);
+      //  gamepadInput.Gameplay.LeftMovement.performed += ctx => m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.VelocityChange);
 
 
     }

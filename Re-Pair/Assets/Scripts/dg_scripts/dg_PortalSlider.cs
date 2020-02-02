@@ -8,12 +8,14 @@ public class dg_PortalSlider : MonoBehaviour
 {
     public Slider m_portalSlider;
     public dg_GameOver m_gameOverText;
+    private R_PortalClosure m_portalClosureRef;
     private float m_portalVal;
     private float m_maxPortal = 100;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         m_portalVal = m_maxPortal;
         m_portalSlider = GetComponent<Slider>();
         m_portalSlider.maxValue = m_maxPortal;

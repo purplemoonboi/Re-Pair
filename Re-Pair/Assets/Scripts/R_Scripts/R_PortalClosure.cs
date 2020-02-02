@@ -6,7 +6,7 @@ public class R_PortalClosure : MonoBehaviour
 {
 
     Vector3 m_localScale;
-    float m_localScaleX, m_localScaleZ;
+    private float m_localScaleX, m_localScaleZ;
 
     
 

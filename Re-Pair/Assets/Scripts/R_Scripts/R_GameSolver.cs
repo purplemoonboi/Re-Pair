@@ -39,7 +39,7 @@ public class R_GameSolver : MonoBehaviour
     private float CalculateDst(Vector3 par_posOne, Vector3 par_posTwo)
     {
         float par_dst = Vector3.Distance(par_posOne, par_posTwo);
-
+        Debug.Log("Dist" + par_dst);
         return par_dst;
     }
 
