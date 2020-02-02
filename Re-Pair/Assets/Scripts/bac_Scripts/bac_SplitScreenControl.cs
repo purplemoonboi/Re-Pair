@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class bac_SplitScreenControl : MonoBehaviour
 {
+    public bool isEnterSplitScreen;
+    public bool isPlayerOnePortal;
+    public bool isPlayerTwoPortal;
     bac_CameraController cameraController;
 
     void Start()
@@ -13,9 +16,18 @@ public class bac_SplitScreenControl : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "PlayerOne" && collider.gameObject.tag == "PlayerTwo")
+        if (collider.gameObject.tag == "PlayerOne" || collider.gameObject.tag == "PlayerTwo")
         {
-            cameraController.splitScreen();
+            if ((isPlayerOnePortal && collider.gameObject.tag == "PlayerOne") || (isPlayerTwoPortal && collider.gameObject.tag == "PlayerTwo"))
+            {
+                this.gameObject.GetComponent<Collider>().enabled = false;
+                cameraController.splitScreen(isEnterSplitScreen);
+            }
+
+            else
+            {
+                Debug.Log("NO! U BAD! WRONG PORTAL!");
+            }
         }
     }
 }

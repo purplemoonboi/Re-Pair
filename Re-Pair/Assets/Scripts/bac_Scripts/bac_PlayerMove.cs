@@ -8,7 +8,7 @@ public class bac_PlayerMove : MonoBehaviour
 {
     public GameObject player1;
     public GameObject player2;
-    public float speed = 3f;
+    public float speed = 10f;
 
     void Update()
     {
@@ -52,7 +52,14 @@ public class bac_PlayerMove : MonoBehaviour
             player2.transform.Translate(Vector3.right * Time.deltaTime * speed);
         }
 
-        //player1.transform.Translate(Vector3.down * Time.deltaTime * speed);
-        //player2.transform.Translate(Vector3.down * Time.deltaTime * speed);
+        if(Input.GetKey(KeyCode.Z))
+        {
+            player1.transform.Translate(Vector3.down * Time.deltaTime * speed);
+        }
+
+        if (Input.GetKey(KeyCode.X))
+        {
+            player2.transform.Translate(Vector3.down * Time.deltaTime * speed);
+        }
     }
 }

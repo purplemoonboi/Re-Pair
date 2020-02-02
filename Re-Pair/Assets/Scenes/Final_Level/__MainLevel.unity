@@ -899,6 +899,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_objectPosition: {fileID: 1334986669}
   m_targetPosition: {fileID: 1717498170}
+--- !u!1 &413389040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5043661809577654307, guid: 4f0ca679fa2112d469f5e04554bc5b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 135851613}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &413389041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413389040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff75060947b3ab49916ee128a67e555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_angularVelocity: 2
 --- !u!1 &424929774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,8 +1909,8 @@ Camera:
   m_GameObject: {fileID: 1126043368}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3516,6 +3535,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_angularVelocity: -100
+--- !u!1 &2005766570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5043661809577654307, guid: 4f0ca679fa2112d469f5e04554bc5b91,
+    type: 3}
+  m_PrefabInstance: {fileID: 1811801319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2005766571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005766570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff75060947b3ab49916ee128a67e555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_angularVelocity: 2
 --- !u!1001 &2032034954
 PrefabInstance:
   m_ObjectHideFlags: 0

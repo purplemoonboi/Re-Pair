@@ -14,8 +14,6 @@ public class bac_CameraController : MonoBehaviour
     [SerializeField] private float m_zoomLimiterY = 50f;
     [SerializeField] private float m_zoomLimiterZ = -23.5f;
 
-    private bool m_checkSplit = false;
-
     private Vector3 m_centrePoint;
     private Vector3 m_newPosition;
     private Vector3 m_velocity;
@@ -50,11 +48,6 @@ public class bac_CameraController : MonoBehaviour
         {
             zoomCamera();
         }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            splitScreen();
-        }
     }
 
     void panCamera()
@@ -83,11 +76,9 @@ public class bac_CameraController : MonoBehaviour
         m_secondCamera.fieldOfView = Mathf.Lerp(m_secondCamera.fieldOfView, l_newZoom, Time.deltaTime);
     }
 
-    public void splitScreen()
+    public void splitScreen(bool split)
     {
-        m_checkSplit = !m_checkSplit;
-
-        if(m_checkSplit)
+        if(split)
         {
             if(transform.gameObject.tag == "MainCamera")
             {
