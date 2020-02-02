@@ -9,6 +9,7 @@ public class PlayerTwo : MonoBehaviour
 {
     [SerializeField] private Rigidbody m_rigidbody;
     [SerializeField] private float health;
+    [SerializeField] public bool hasFinishedSplitScreen = false; //Added by Bridget
     private bool takeDamage = false;
 
     private float m_xSpeedmin, m_xSpeedMax, m_zSpeedMin, m_zSpeedMax, m_thrust;

@@ -25,7 +25,7 @@ public class R_GameSolver : MonoBehaviour
     private void Update()
     {
         m_distance = CalculateDst(m_objectPosition.position, m_targetPosition.position);
-        Debug.Log("Distance: " + m_distance);
+        //Debug.Log("Distance: " + m_distance);
     }
 
  

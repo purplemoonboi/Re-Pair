@@ -19,6 +19,8 @@ public class bac_CameraController : MonoBehaviour
     private Vector3 m_velocity;
    [SerializeField] private Vector3 m_offset;
 
+    public bool checkSplit = false;
+
     public Camera m_mainCamera;
     public Camera m_secondCamera;
 
@@ -47,6 +49,12 @@ public class bac_CameraController : MonoBehaviour
         if (m_cameraTargets.Count > 1)
         {
             zoomCamera();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            checkSplit = !checkSplit;
+            splitScreen(checkSplit);
         }
     }
 
@@ -80,15 +88,15 @@ public class bac_CameraController : MonoBehaviour
     {
         if(split)
         {
-            if(transform.gameObject.tag == "MainCamera")
+            m_cameraTargets.Clear();
+
+            if (transform.gameObject.tag == "MainCamera")
             {
-                m_cameraTargets.Clear();
                 m_cameraTargets.Add(GameObject.FindGameObjectWithTag("PlayerOne").transform);
             }
 
             else if(transform.gameObject.tag == "SecondCamera")
             {
-                m_cameraTargets.Clear();
                 m_cameraTargets.Add(GameObject.FindGameObjectWithTag("PlayerTwo").transform);
             }
 
