@@ -50,7 +50,7 @@ public class PlayerTwo : MonoBehaviour
         {
             m_thrust += 10;
 
-            m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.VelocityChange);
+            m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.Acceleration);
             if (m_thrust > 150)m_thrust = 150;
 
         }
@@ -58,21 +58,21 @@ public class PlayerTwo : MonoBehaviour
         {
             m_thrust += 10;
 
-            m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime, ForceMode.VelocityChange);
+            m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime, ForceMode.Acceleration);
             if (m_thrust > 150) m_thrust = 150;
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             m_thrust += 10;
 
-            m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
             if (m_thrust > 150) m_thrust = 150;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             m_thrust += 10;
 
-            m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
             if (m_thrust > 150) m_thrust = 150;
         }
         else m_thrust -= 10;

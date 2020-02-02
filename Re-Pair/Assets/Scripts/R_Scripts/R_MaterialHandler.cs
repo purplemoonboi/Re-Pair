@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.LWRP;
 
-[RequireComponent(typeof(Material))]
+
 
 public class R_MaterialHandler : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class R_MaterialHandler : MonoBehaviour
 
         float l_dst = R_GameSolver.GetDistance();
 
-        l_dst -= 10;
+        
         
 
         m_materialOne.SetFloat("_intensity", l_dst);
