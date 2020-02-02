@@ -1,11 +1,11 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/R_Scripts/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-/*
+
 public class @PlayerControls : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
@@ -158,4 +158,4 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLeftMovement(InputAction.CallbackContext context);
         void OnRightMovement(InputAction.CallbackContext context);
     }
-}*/
+}
