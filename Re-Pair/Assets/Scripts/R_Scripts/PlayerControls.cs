@@ -1,5 +1,5 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/Scripts/R_Scripts/PlayerControls.inputactions'
-/*
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -159,4 +159,3 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnRightMovement(InputAction.CallbackContext context);
     }
 }
-*/
