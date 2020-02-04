@@ -7,40 +7,48 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerOne : MonoBehaviour
 {
-    PlayerControls gamepadInput;
 
+    [Header("Movement")]
     [SerializeField] [Range(1, 10000)] private float m_thrust = 100f;
+    [SerializeField] private float m_acceleration;
+    [SerializeField] private float m_maxAcceleration;
+    [SerializeField] private float m_rateOfChange;
+    [SerializeField] private float m_thrustPower;
+    [SerializeField] private float m_thrustMax;
+    [SerializeField] private float m_thrustDecline;
     [SerializeField] private Rigidbody m_rigidbody;
-     public float health;
-    [SerializeField] public bool hasFinishedSplitScreen = false; //Added by Bridget
-    private bool takeDamage = false;
 
-    private float m_xSpeedmin, m_xSpeedMax, m_zSpeedMin, m_zSpeedMax;
+    [Header("Health")]
+    [SerializeField] private int m_health;
+    [SerializeField] private int m_incrimentedHealthValue;
+    private bool m_takeDamage = false;
+
+    [Header("Trail Renderer")]
+    [SerializeField] private TrailRenderer m_playerOneTrailRenderer;
+
+    [Header("Splitscreen Boolean")]
+    public bool m_hasFinishedSplitScreen = false; //Added by Bridget
+  
+
+    
    
 
-    private void Awake()
+    private void Start()
     {
         m_rigidbody = GetComponent<Rigidbody>();
-      //  gamepadInput = new PlayerControls();
-
-        m_xSpeedMax = 250;
-        m_xSpeedmin = 100;
-        m_zSpeedMax = 250;
-        m_zSpeedMin = 100;
-
-
-   
+        m_playerOneTrailRenderer = GetComponent<TrailRenderer>();
+        m_health = 500;
     }
 
     private void Update()
     {
-        transform.Translate(0, -30 * Time.deltaTime, 0);
+        AcceleratePlayer();
+        TrailRenderer();
     }
 
     void FixedUpdate()
     {
         HandleInput();
-       // ControllerInput();
     }
 
 
@@ -48,34 +56,34 @@ public class PlayerOne : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            m_thrust += 125;
+            m_thrust += m_thrustPower;
 
-            m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.Acceleration);
-            if (m_thrust > 900) m_thrust = 900;
+            m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
+            if (m_thrust > m_thrustMax) m_thrust = m_thrustMax;
 
         }
         if (Input.GetKey(KeyCode.S))
         {
-            m_thrust += 125;
+            m_thrust += m_thrustPower;
 
-            m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime, ForceMode.Acceleration);
-            if (m_thrust > 900) m_thrust = 900;
+            m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
+            if (m_thrust > m_thrustMax) m_thrust = m_thrustMax;
         }
         if (Input.GetKey(KeyCode.A))
         {
-           m_thrust += 125;
+           m_thrust += m_thrustPower;
 
-            m_rigidbody.AddForce(-m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
-            if (m_thrust > 900) m_thrust = 900;
+            m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.Acceleration);
+            if (m_thrust > m_thrustMax) m_thrust = m_thrustMax;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            m_thrust += 125;
+            m_thrust += m_thrustPower;
 
-            m_rigidbody.AddForce(m_thrust * Time.deltaTime, 0, 0, ForceMode.Acceleration);
-            if (m_thrust > 900) m_thrust = 900;
+            m_rigidbody.AddForce(0, 0, -m_thrust * Time.deltaTime, ForceMode.Acceleration);
+            if (m_thrust > m_thrustMax) m_thrust = m_thrustMax;
         }
-         m_thrust -= 75;
+         m_thrust -= m_thrustDecline;
 
         if (m_thrust < 300)
         {
@@ -83,28 +91,33 @@ public class PlayerOne : MonoBehaviour
         }
     }
 
-    void ControllerInput()
+    private void AcceleratePlayer()
     {
-      //  gamepadInput.Gameplay.LeftMovement.performed += ctx => m_rigidbody.AddForce(0, 0, m_thrust * Time.deltaTime, ForceMode.VelocityChange);
-
-
+        m_acceleration += 18;
+        transform.Translate(-m_acceleration * Time.deltaTime, 0, 0);
+        if (m_acceleration > m_maxAcceleration) m_acceleration = m_maxAcceleration;
     }
 
     public void IncrimentHealth()
     {
-        health += 25;
+        m_health += 25;
+    }
+
+    private void TrailRenderer()
+    {
+       // if (m_acceleration == 24) { m_playerOneTrailRenderer.endColor = Color.green; }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Damage" )
         {
-            health -= 100;
+            m_health -= 100;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        takeDamage = false;
+        m_takeDamage = false;
     }
 }

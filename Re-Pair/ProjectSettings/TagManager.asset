@@ -9,6 +9,7 @@ TagManager:
   - SecondCamera
   - PortalRing
   - Damage
+  - Geo
   layers:
   - Default
   - TransparentFX

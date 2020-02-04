@@ -19,7 +19,7 @@ public class R_TeleporterScript : MonoBehaviour
         if(m_PlayerOneIsOverlapping)
         {
             Vector3 l_portalToPlayer = m_PlayerOne.position - transform.position;
-            float l_dotproduct = Vector3.Dot(transform.up, l_portalToPlayer);
+            float l_dotproduct = Vector3.Dot(transform.forward, l_portalToPlayer);
 
 
             if (l_dotproduct < 0f)
@@ -27,7 +27,7 @@ public class R_TeleporterScript : MonoBehaviour
                 float l_rotDifference = Quaternion.Angle(transform.rotation, m_reciever.rotation);
                 l_rotDifference += 180;
 
-                m_PlayerOne.Rotate(Vector3.up, l_rotDifference);
+                m_PlayerOne.Rotate(Vector3.forward, l_rotDifference);
 
                 Vector3 l_posOffset = Quaternion.Euler(0f, l_rotDifference, 0f) * l_portalToPlayer;
                 m_PlayerOne.position = m_reciever.position + l_posOffset;
@@ -77,7 +77,7 @@ public class R_TeleporterScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "PlayerOne" && other.tag == "PlayerTwo") 
+        if(other.tag == "PlayerOne") 
         {
             Debug.Log("No colliding");
             m_PlayerOneIsOverlapping = true;

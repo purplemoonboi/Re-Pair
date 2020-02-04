@@ -11,8 +11,8 @@ public class bac_CameraController : MonoBehaviour
     [SerializeField] private float m_smoothTime = 0.5f;
     [SerializeField] private float m_minZoom = 40f;
     [SerializeField] private float m_maxZoom = 10f;
-    [SerializeField] private float m_zoomLimiterY = 50f;
-    [SerializeField] private float m_zoomLimiterZ = -23.5f;
+    [SerializeField] private float m_zoomLimiterY; 
+    [SerializeField] private float m_zoomLimiterZ;
 
     private Vector3 m_centrePoint;
     private Vector3 m_newPosition;
@@ -80,6 +80,7 @@ public class bac_CameraController : MonoBehaviour
         }
 
         float l_newZoom = Mathf.Lerp(m_maxZoom, m_minZoom, getGreatestDistance() / l_newZoomLimit);
+
         m_mainCamera.fieldOfView = Mathf.Lerp(m_mainCamera.fieldOfView, l_newZoom, Time.deltaTime);
         m_secondCamera.fieldOfView = Mathf.Lerp(m_secondCamera.fieldOfView, l_newZoom, Time.deltaTime);
     }

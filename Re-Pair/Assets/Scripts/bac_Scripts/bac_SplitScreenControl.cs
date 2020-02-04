@@ -49,19 +49,19 @@ public class bac_SplitScreenControl : MonoBehaviour
         {
             if(collider.gameObject.tag == "PlayerOne")
             {
-                GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOne>().hasFinishedSplitScreen = true;
+                GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOne>().m_hasFinishedSplitScreen = true;
                 Camera.main.transform.position = new Vector3(-95, -1090, 146);
                 collider.gameObject.transform.position = new Vector3(-95, -1140, 146);
             }
 
             else if(collider.gameObject.tag == "PlayerTwo")
             {
-                GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwo>().hasFinishedSplitScreen = true;
+                GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwo>().m_hasFinishedSplitScreen = true;
                 GameObject.FindGameObjectWithTag("SecondCamera").transform.position = new Vector3(-72, -1090, 146);
                 collider.gameObject.transform.position = new Vector3(-72, -1140, 146);
             }
 
-            if((GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOne>().hasFinishedSplitScreen == true) && (GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwo>().hasFinishedSplitScreen == true))
+            if((GameObject.FindGameObjectWithTag("PlayerOne").GetComponent<PlayerOne>().m_hasFinishedSplitScreen == true) && (GameObject.FindGameObjectWithTag("PlayerTwo").GetComponent<PlayerTwo>().m_hasFinishedSplitScreen == true))
             {
                 cameraController.splitScreen(false);
                 Camera.main.GetComponent<bac_CameraController>().m_cameraTargets.Clear();
